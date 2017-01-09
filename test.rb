@@ -119,8 +119,8 @@ class TestTheCode < Test::Unit::TestCase
   end
 
   def test_welcome_responds_with_hey_dont_count_for_bad_calculation
-  	# assert_equal('hey dont count',($cases.welcome 0/'a'));
-  	# assert_equal('hey dont count',($cases.welcome 'a' * 0));
+  	assert_equal('hey dont count',($cases.welcome 0/'a'));
+  	assert_equal('hey dont count',($cases.welcome 'a' * 0));
   end
 end
 
