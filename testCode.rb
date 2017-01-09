@@ -30,4 +30,36 @@ class TestCode
       return text.reverse
     end
 
+    def getVowelCount(text)
+      @count = 0
+      @vowels = ['a','e','i','o','u'];
+      text.downcase.split(//).each do |char|
+        if @vowels.include? char
+          @count = @count + 1
+        end
+      end
+      return @count
+    end
+
+    def tidyText(text)
+      return text.split(/\s+/).join(" ")
+    end
+
+    def reverseWords(text)
+      @reversedWords = Array.new;
+      text.split(/\s/).each do |word|
+        @reversedWords.push(reverseText word)
+      end
+      return  @reversedWords.join(" ")
+    end
+
+    def welcome(input)
+      if input.is_a? Integer
+        return "hey count"
+      elsif input.to_s.include? (".")
+        return "hey decimal"
+      end
+      return "hello text"
+    end
+
 end

@@ -72,6 +72,56 @@ class TestTheCode < Test::Unit::TestCase
   	@y = "alo .olleh";
   	assert_equal(($cases.reverseText @x),@y);
   end
+
+  def test_getVowelCount_gives_the_count_of_vowels
+  	assert_equal(($cases.getVowelCount "morning"),2);
+  	assert_equal(($cases.getVowelCount "cooling"),3);
+  	assert_equal(($cases.getVowelCount "i am"),2);
+  end
+
+  def test_getVowelCount_gets_the_count_of_vowels_with_capital_letters
+  	assert_equal(($cases.getVowelCount "Owl"),1);
+  	assert_equal(($cases.getVowelCount "cOOling"),3);
+  	assert_equal(($cases.getVowelCount "I am not"),3);
+  end
+
+  def test_tidyText_removes_extra_spaces_between_words
+  	@x = 'The  world    is a very    wide space.  ';
+  	@y = 'The world is a very wide space.';
+  	assert_equal(($cases.tidyText @x),@y);
+  end
+
+  def test_reverseWords_reverses_words_in_sentance
+  	@x = "The world is a very wide space. Or is it not?";
+  	@y = "ehT dlrow si a yrev ediw .ecaps rO si ti ?ton";
+  	assert_equal(($cases.reverseWords @x),@y);
+  end
+
+  def test_welcome_responds_with_hello_text_for_text
+  	assert_equal("hello text", ($cases.welcome 'hmm'));
+  	assert_equal("hello text", ($cases.welcome 'Here I am'));
+  	assert_equal("hello text", ($cases.welcome '42'));
+  	assert_equal("hello text", ($cases.welcome ''));
+  end
+
+  def test_welcome_responds_with_hey_count_for_numbers
+  	assert_equal('hey count', ($cases.welcome 2));
+  	assert_equal('hey count', ($cases.welcome 420));
+  	assert_equal('hey count', ($cases.welcome 0));
+  	assert_equal('hey count', ($cases.welcome -25));
+  end
+
+  def test_welcome_responds_with_hey_decimal_for_decimal_numbers
+  	assert_equal('hey decimal', ($cases.welcome 2.1));
+  	assert_equal('hey decimal', ($cases.welcome 420.45));
+  	assert_equal('hey decimal', ($cases.welcome 0.1));
+  	assert_equal('hey decimal', ($cases.welcome -25.01));
+  end
+
+  def test_welcome_responds_with_hey_dont_count_for_bad_calculation
+  	# assert_equal('hey dont count',($cases.welcome 0/'a'));
+  	# assert_equal('hey dont count',($cases.welcome 'a' * 0));
+  end
 end
 
 # 0,1,1,2,3,5
